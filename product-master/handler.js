@@ -11,14 +11,37 @@ function createResponse(statusCode, message) {
 }
 
 module.exports.saveProduct = (event, context, callback) => {
-  const Product = JSON.parse(event.body);
-  console.log(Product);
-  Product.productId = uuidv1();
+  const product = JSON.parse(event.body);
+  if(Object.keys(product).length == 7)
+  {
+    if( Object.keys(product)[0] == 'code' &&
+        Object.keys(product)[1] == 'name' &&
+        Object.keys(product)[2] == 'description' &&
+        Object.keys(product)[3] == 'brand' &&
+        Object.keys(product)[4] == 'model' &&
+        Object.keys(product)[5] == 'stock' &&
+        Object.keys(product)[6] == 'unit' &&
+        Object.keys(product)[7] == 'category' ){
+          console.log("Cabeceras correctas");
+          product.productId = uuidv1();
+          databaseManager.saveProduct(product).then(response => {
+            console.log(response);
+            callback(null, createResponse(200, response));
+          });
+        }
+        else{
+          console.log("La información ingresada no es correcta");
+        }
 
-  databaseManager.saveProduct(Product).then(response => {
-    console.log(response);
-    callback(null, createResponse(200, response));
-  });
+  }
+  else{
+    console.log("Debe contener los 8 parametros requeridos");
+  }
+
+  
+
+  
+  
 };
 
 module.exports.getProduct = (event, context, callback) => {

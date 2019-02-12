@@ -12,7 +12,7 @@ module.exports.initializateDynamoClient = newDynamo => {
 module.exports.saveProduct = product => {
   const params = {
     TableName: TABLE_NAME,
-    Product: product
+    Item: product
   };
 
   return dynamo.put(params).promise().then(() => {
@@ -29,7 +29,7 @@ module.exports.getProduct = productId => {
   };
 
   return dynamo.get(params).promise().then(result => {
-    return result.Product;
+    return result.Item;
   });
 };
 

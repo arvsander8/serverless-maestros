@@ -18,13 +18,12 @@ provider:
   iamRoleStatements:
     - Effect: "Allow"
       Action:
-        - "dynamodb:GetProduct"
-        - "dynamodb:PutProduct"
-        - "dynamodb:UpdateProduct"
-        - "dynamodb:DeleteProduct"
-        - "dynamodb:ListStreams"
+        - dynamodb:*
       Resource:
-        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.settings.${self:custom.myStage}.ITEMS_DYNAMODB_TABLE}"
+        - "*"
+
+plugins:
+  - serverless-offline
 
 functions:
   saveProduct:

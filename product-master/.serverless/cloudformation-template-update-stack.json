@@ -5,34 +5,34 @@
     "ServerlessDeploymentBucket": {
       "Type": "AWS::S3::Bucket"
     },
-    "SaveItemLogGroup": {
+    "SaveProductLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/serverless-dynamo-basic-operations-dev-saveItem"
+        "LogGroupName": "/aws/lambda/sls-product-master-dev-saveProduct"
       }
     },
-    "GetItemLogGroup": {
+    "GetProductLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/serverless-dynamo-basic-operations-dev-getItem"
+        "LogGroupName": "/aws/lambda/sls-product-master-dev-getProduct"
       }
     },
-    "DeleteItemLogGroup": {
+    "DeleteProductLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/serverless-dynamo-basic-operations-dev-deleteItem"
+        "LogGroupName": "/aws/lambda/sls-product-master-dev-deleteProduct"
       }
     },
-    "UpdateItemLogGroup": {
+    "UpdateProductLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/serverless-dynamo-basic-operations-dev-updateItem"
+        "LogGroupName": "/aws/lambda/sls-product-master-dev-updateProduct"
       }
     },
     "TriggerStreamLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/serverless-dynamo-basic-operations-dev-triggerStream"
+        "LogGroupName": "/aws/lambda/sls-product-master-dev-triggerStream"
       }
     },
     "IamRoleLambdaExecution": {
@@ -61,7 +61,7 @@
                 "-",
                 [
                   "dev",
-                  "serverless-dynamo-basic-operations",
+                  "sls-product-master",
                   "lambda"
                 ]
               ]
@@ -76,19 +76,19 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-dynamo-basic-operations-dev-saveItem:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/sls-product-master-dev-saveProduct:*"
                     },
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-dynamo-basic-operations-dev-getItem:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/sls-product-master-dev-getProduct:*"
                     },
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-dynamo-basic-operations-dev-deleteItem:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/sls-product-master-dev-deleteProduct:*"
                     },
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-dynamo-basic-operations-dev-updateItem:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/sls-product-master-dev-updateProduct:*"
                     },
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-dynamo-basic-operations-dev-triggerStream:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/sls-product-master-dev-triggerStream:*"
                     }
                   ]
                 },
@@ -99,33 +99,29 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-dynamo-basic-operations-dev-saveItem:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/sls-product-master-dev-saveProduct:*:*"
                     },
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-dynamo-basic-operations-dev-getItem:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/sls-product-master-dev-getProduct:*:*"
                     },
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-dynamo-basic-operations-dev-deleteItem:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/sls-product-master-dev-deleteProduct:*:*"
                     },
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-dynamo-basic-operations-dev-updateItem:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/sls-product-master-dev-updateProduct:*:*"
                     },
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-dynamo-basic-operations-dev-triggerStream:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/sls-product-master-dev-triggerStream:*:*"
                     }
                   ]
                 },
                 {
                   "Effect": "Allow",
                   "Action": [
-                    "dynamodb:GetItem",
-                    "dynamodb:PutItem",
-                    "dynamodb:UpdateItem",
-                    "dynamodb:DeleteItem",
-                    "dynamodb:ListStreams"
+                    "dynamodb:*"
                   ],
                   "Resource": [
-                    "arn:aws:dynamodb:us-east-1:*:table/sls-basic-operations-items-dev"
+                    "*"
                   ]
                 },
                 {
@@ -154,7 +150,7 @@
           "Fn::Join": [
             "-",
             [
-              "serverless-dynamo-basic-operations",
+              "sls-product-master",
               "dev",
               "us-east-1",
               "lambdaRole"
@@ -163,17 +159,17 @@
         }
       }
     },
-    "SaveItemLambdaFunction": {
+    "SaveProductLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-dynamo-basic-operations/dev/1549857053294-2019-02-11T03:50:53.294Z/serverless-dynamo-basic-operations.zip"
+          "S3Key": "serverless/sls-product-master/dev/1549967893421-2019-02-12T10:38:13.421Z/sls-product-master.zip"
         },
-        "FunctionName": "serverless-dynamo-basic-operations-dev-saveItem",
-        "Handler": "handler.saveItem",
+        "FunctionName": "sls-product-master-dev-saveProduct",
+        "Handler": "handler.saveProduct",
         "MemorySize": 1024,
         "Role": {
           "Fn::GetAtt": [
@@ -185,36 +181,36 @@
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "ITEMS_DYNAMODB_TABLE": "sls-basic-operations-items-dev"
+            "ITEMS_DYNAMODB_TABLE": "product-master-dev"
           }
         }
       },
       "DependsOn": [
-        "SaveItemLogGroup",
+        "SaveProductLogGroup",
         "IamRoleLambdaExecution"
       ]
     },
-    "SaveItemLambdaVersionqgFEeV4GHw3egQKJpG0ys8DDEsCYYjjOQPUkbfeXA": {
+    "SaveProductLambdaVersionfYfqmewdOOHxLdZn62CmXuPYd0D0VVzLqtnoR1BLY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Ref": "SaveItemLambdaFunction"
+          "Ref": "SaveProductLambdaFunction"
         },
-        "CodeSha256": "XmNG8W/SYTVtHEvW2iR4Hb9b1XDdcfmJYLkls4QVvt0="
+        "CodeSha256": "LRq2FIBNYLYYobu3sl0p/lh0Y+3LpIWLb9vAj+kvP/4="
       }
     },
-    "GetItemLambdaFunction": {
+    "GetProductLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-dynamo-basic-operations/dev/1549857053294-2019-02-11T03:50:53.294Z/serverless-dynamo-basic-operations.zip"
+          "S3Key": "serverless/sls-product-master/dev/1549967893421-2019-02-12T10:38:13.421Z/sls-product-master.zip"
         },
-        "FunctionName": "serverless-dynamo-basic-operations-dev-getItem",
-        "Handler": "handler.getItem",
+        "FunctionName": "sls-product-master-dev-getProduct",
+        "Handler": "handler.getProduct",
         "MemorySize": 1024,
         "Role": {
           "Fn::GetAtt": [
@@ -226,36 +222,36 @@
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "ITEMS_DYNAMODB_TABLE": "sls-basic-operations-items-dev"
+            "ITEMS_DYNAMODB_TABLE": "product-master-dev"
           }
         }
       },
       "DependsOn": [
-        "GetItemLogGroup",
+        "GetProductLogGroup",
         "IamRoleLambdaExecution"
       ]
     },
-    "GetItemLambdaVersionS8FkEqwnKhOQu18rIkVLfZRLojS5vqcU92OgwzY34": {
+    "GetProductLambdaVersionoQWD0IOZupGV1D6VV4jABWMwR5czFtsrTIPFQWC7Xg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Ref": "GetItemLambdaFunction"
+          "Ref": "GetProductLambdaFunction"
         },
-        "CodeSha256": "XmNG8W/SYTVtHEvW2iR4Hb9b1XDdcfmJYLkls4QVvt0="
+        "CodeSha256": "LRq2FIBNYLYYobu3sl0p/lh0Y+3LpIWLb9vAj+kvP/4="
       }
     },
-    "DeleteItemLambdaFunction": {
+    "DeleteProductLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-dynamo-basic-operations/dev/1549857053294-2019-02-11T03:50:53.294Z/serverless-dynamo-basic-operations.zip"
+          "S3Key": "serverless/sls-product-master/dev/1549967893421-2019-02-12T10:38:13.421Z/sls-product-master.zip"
         },
-        "FunctionName": "serverless-dynamo-basic-operations-dev-deleteItem",
-        "Handler": "handler.deleteItem",
+        "FunctionName": "sls-product-master-dev-deleteProduct",
+        "Handler": "handler.deleteProduct",
         "MemorySize": 1024,
         "Role": {
           "Fn::GetAtt": [
@@ -267,36 +263,36 @@
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "ITEMS_DYNAMODB_TABLE": "sls-basic-operations-items-dev"
+            "ITEMS_DYNAMODB_TABLE": "product-master-dev"
           }
         }
       },
       "DependsOn": [
-        "DeleteItemLogGroup",
+        "DeleteProductLogGroup",
         "IamRoleLambdaExecution"
       ]
     },
-    "DeleteItemLambdaVersioncEc4rk1S4GNW9wZHRkrmW4SbpcGtMWKK1TmPyPBo": {
+    "DeleteProductLambdaVersioninbTnbBPNuYXQNzjnvKzica3hq8ydbE15914UVSbs": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Ref": "DeleteItemLambdaFunction"
+          "Ref": "DeleteProductLambdaFunction"
         },
-        "CodeSha256": "XmNG8W/SYTVtHEvW2iR4Hb9b1XDdcfmJYLkls4QVvt0="
+        "CodeSha256": "LRq2FIBNYLYYobu3sl0p/lh0Y+3LpIWLb9vAj+kvP/4="
       }
     },
-    "UpdateItemLambdaFunction": {
+    "UpdateProductLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-dynamo-basic-operations/dev/1549857053294-2019-02-11T03:50:53.294Z/serverless-dynamo-basic-operations.zip"
+          "S3Key": "serverless/sls-product-master/dev/1549967893421-2019-02-12T10:38:13.421Z/sls-product-master.zip"
         },
-        "FunctionName": "serverless-dynamo-basic-operations-dev-updateItem",
-        "Handler": "handler.updateItem",
+        "FunctionName": "sls-product-master-dev-updateProduct",
+        "Handler": "handler.updateProduct",
         "MemorySize": 1024,
         "Role": {
           "Fn::GetAtt": [
@@ -308,23 +304,23 @@
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "ITEMS_DYNAMODB_TABLE": "sls-basic-operations-items-dev"
+            "ITEMS_DYNAMODB_TABLE": "product-master-dev"
           }
         }
       },
       "DependsOn": [
-        "UpdateItemLogGroup",
+        "UpdateProductLogGroup",
         "IamRoleLambdaExecution"
       ]
     },
-    "UpdateItemLambdaVersionJEx80ZnWB6RM1LDSQxcu4rgKwhM6cJufOzs34LSjn0": {
+    "UpdateProductLambdaVersionjwAWzo9MEXNIcXF9IgoVygEzQXYDCHau6rthS0SdNA": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Ref": "UpdateItemLambdaFunction"
+          "Ref": "UpdateProductLambdaFunction"
         },
-        "CodeSha256": "XmNG8W/SYTVtHEvW2iR4Hb9b1XDdcfmJYLkls4QVvt0="
+        "CodeSha256": "LRq2FIBNYLYYobu3sl0p/lh0Y+3LpIWLb9vAj+kvP/4="
       }
     },
     "TriggerStreamLambdaFunction": {
@@ -334,9 +330,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-dynamo-basic-operations/dev/1549857053294-2019-02-11T03:50:53.294Z/serverless-dynamo-basic-operations.zip"
+          "S3Key": "serverless/sls-product-master/dev/1549967893421-2019-02-12T10:38:13.421Z/sls-product-master.zip"
         },
-        "FunctionName": "serverless-dynamo-basic-operations-dev-triggerStream",
+        "FunctionName": "sls-product-master-dev-triggerStream",
         "Handler": "handler.triggerStream",
         "MemorySize": 1024,
         "Role": {
@@ -349,7 +345,7 @@
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "ITEMS_DYNAMODB_TABLE": "sls-basic-operations-items-dev"
+            "ITEMS_DYNAMODB_TABLE": "product-master-dev"
           }
         }
       },
@@ -358,20 +354,20 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "TriggerStreamLambdaVersion4Ukg3Y6Efg3sWBmWyvz6K0qRNhDCRDBwltcFDBqQY": {
+    "TriggerStreamLambdaVersionZ8ctF01DRzfDWAIm0VHTDqhxxhixKG0jwH7nhssdxE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "TriggerStreamLambdaFunction"
         },
-        "CodeSha256": "XmNG8W/SYTVtHEvW2iR4Hb9b1XDdcfmJYLkls4QVvt0="
+        "CodeSha256": "LRq2FIBNYLYYobu3sl0p/lh0Y+3LpIWLb9vAj+kvP/4="
       }
     },
     "ApiGatewayRestApi": {
       "Type": "AWS::ApiGateway::RestApi",
       "Properties": {
-        "Name": "dev-serverless-dynamo-basic-operations",
+        "Name": "dev-sls-product-master",
         "EndpointConfiguration": {
           "Types": [
             "EDGE"
@@ -379,7 +375,7 @@
         }
       }
     },
-    "ApiGatewayResourceItem": {
+    "ApiGatewayResourceProduct": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
         "ParentId": {
@@ -388,31 +384,31 @@
             "RootResourceId"
           ]
         },
-        "PathPart": "item",
+        "PathPart": "product",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
       }
     },
-    "ApiGatewayResourceItemItemidVar": {
+    "ApiGatewayResourceProductProductidVar": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
         "ParentId": {
-          "Ref": "ApiGatewayResourceItem"
+          "Ref": "ApiGatewayResourceProduct"
         },
-        "PathPart": "{itemId}",
+        "PathPart": "{productId}",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
       }
     },
-    "ApiGatewayMethodItemPost": {
+    "ApiGatewayMethodProductPost": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "HttpMethod": "POST",
         "RequestParameters": {},
         "ResourceId": {
-          "Ref": "ApiGatewayResourceItem"
+          "Ref": "ApiGatewayResourceProduct"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -437,7 +433,7 @@
                 ":lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
-                    "SaveItemLambdaFunction",
+                    "SaveProductLambdaFunction",
                     "Arn"
                   ]
                 },
@@ -449,13 +445,13 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayMethodItemItemidVarGet": {
+    "ApiGatewayMethodProductProductidVarGet": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "HttpMethod": "GET",
         "RequestParameters": {},
         "ResourceId": {
-          "Ref": "ApiGatewayResourceItemItemidVar"
+          "Ref": "ApiGatewayResourceProductProductidVar"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -480,7 +476,7 @@
                 ":lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
-                    "GetItemLambdaFunction",
+                    "GetProductLambdaFunction",
                     "Arn"
                   ]
                 },
@@ -492,13 +488,13 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayMethodItemItemidVarDelete": {
+    "ApiGatewayMethodProductProductidVarDelete": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "HttpMethod": "DELETE",
         "RequestParameters": {},
         "ResourceId": {
-          "Ref": "ApiGatewayResourceItemItemidVar"
+          "Ref": "ApiGatewayResourceProductProductidVar"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -523,7 +519,7 @@
                 ":lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
-                    "DeleteItemLambdaFunction",
+                    "DeleteProductLambdaFunction",
                     "Arn"
                   ]
                 },
@@ -535,13 +531,13 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayMethodItemItemidVarPut": {
+    "ApiGatewayMethodProductProductidVarPut": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "HttpMethod": "PUT",
         "RequestParameters": {},
         "ResourceId": {
-          "Ref": "ApiGatewayResourceItemItemidVar"
+          "Ref": "ApiGatewayResourceProductProductidVar"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -566,7 +562,7 @@
                 ":lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
-                    "UpdateItemLambdaFunction",
+                    "UpdateProductLambdaFunction",
                     "Arn"
                   ]
                 },
@@ -578,7 +574,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1549857053313": {
+    "ApiGatewayDeployment1549967894156": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -587,18 +583,18 @@
         "StageName": "dev"
       },
       "DependsOn": [
-        "ApiGatewayMethodItemPost",
-        "ApiGatewayMethodItemItemidVarGet",
-        "ApiGatewayMethodItemItemidVarDelete",
-        "ApiGatewayMethodItemItemidVarPut"
+        "ApiGatewayMethodProductPost",
+        "ApiGatewayMethodProductProductidVarGet",
+        "ApiGatewayMethodProductProductidVarDelete",
+        "ApiGatewayMethodProductProductidVarPut"
       ]
     },
-    "SaveItemLambdaPermissionApiGateway": {
+    "SaveProductLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
           "Fn::GetAtt": [
-            "SaveItemLambdaFunction",
+            "SaveProductLambdaFunction",
             "Arn"
           ]
         },
@@ -640,12 +636,12 @@
         }
       }
     },
-    "GetItemLambdaPermissionApiGateway": {
+    "GetProductLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
           "Fn::GetAtt": [
-            "GetItemLambdaFunction",
+            "GetProductLambdaFunction",
             "Arn"
           ]
         },
@@ -687,12 +683,12 @@
         }
       }
     },
-    "DeleteItemLambdaPermissionApiGateway": {
+    "DeleteProductLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
           "Fn::GetAtt": [
-            "DeleteItemLambdaFunction",
+            "DeleteProductLambdaFunction",
             "Arn"
           ]
         },
@@ -734,12 +730,12 @@
         }
       }
     },
-    "UpdateItemLambdaPermissionApiGateway": {
+    "UpdateProductLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
           "Fn::GetAtt": [
-            "UpdateItemLambdaFunction",
+            "UpdateProductLambdaFunction",
             "Arn"
           ]
         },
@@ -807,13 +803,13 @@
       "Properties": {
         "AttributeDefinitions": [
           {
-            "AttributeName": "itemId",
+            "AttributeName": "productId",
             "AttributeType": "S"
           }
         ],
         "KeySchema": [
           {
-            "AttributeName": "itemId",
+            "AttributeName": "productId",
             "KeyType": "HASH"
           }
         ],
@@ -821,7 +817,7 @@
           "ReadCapacityUnits": 1,
           "WriteCapacityUnits": 1
         },
-        "TableName": "sls-basic-operations-items-dev",
+        "TableName": "product-master-dev",
         "StreamSpecification": {
           "StreamViewType": "NEW_IMAGE"
         }
@@ -834,34 +830,34 @@
         "Ref": "ServerlessDeploymentBucket"
       }
     },
-    "SaveItemLambdaFunctionQualifiedArn": {
+    "SaveProductLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SaveItemLambdaVersionqgFEeV4GHw3egQKJpG0ys8DDEsCYYjjOQPUkbfeXA"
+        "Ref": "SaveProductLambdaVersionfYfqmewdOOHxLdZn62CmXuPYd0D0VVzLqtnoR1BLY"
       }
     },
-    "GetItemLambdaFunctionQualifiedArn": {
+    "GetProductLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetItemLambdaVersionS8FkEqwnKhOQu18rIkVLfZRLojS5vqcU92OgwzY34"
+        "Ref": "GetProductLambdaVersionoQWD0IOZupGV1D6VV4jABWMwR5czFtsrTIPFQWC7Xg"
       }
     },
-    "DeleteItemLambdaFunctionQualifiedArn": {
+    "DeleteProductLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteItemLambdaVersioncEc4rk1S4GNW9wZHRkrmW4SbpcGtMWKK1TmPyPBo"
+        "Ref": "DeleteProductLambdaVersioninbTnbBPNuYXQNzjnvKzica3hq8ydbE15914UVSbs"
       }
     },
-    "UpdateItemLambdaFunctionQualifiedArn": {
+    "UpdateProductLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateItemLambdaVersionJEx80ZnWB6RM1LDSQxcu4rgKwhM6cJufOzs34LSjn0"
+        "Ref": "UpdateProductLambdaVersionjwAWzo9MEXNIcXF9IgoVygEzQXYDCHau6rthS0SdNA"
       }
     },
     "TriggerStreamLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "TriggerStreamLambdaVersion4Ukg3Y6Efg3sWBmWyvz6K0qRNhDCRDBwltcFDBqQY"
+        "Ref": "TriggerStreamLambdaVersionZ8ctF01DRzfDWAIm0VHTDqhxxhixKG0jwH7nhssdxE"
       }
     },
     "ServiceEndpoint": {
